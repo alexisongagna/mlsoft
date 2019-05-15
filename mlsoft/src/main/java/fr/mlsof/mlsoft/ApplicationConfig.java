@@ -4,7 +4,6 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import fr.mlsof.mlsoft.repository.PersonneJDBCTemplate;
 import javax.sql.DataSource;
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,13 +25,6 @@ public class ApplicationConfig {
 
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
-       /* BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
-        ds.setUrl(env.getProperty("spring.datasource.url"));
-        ds.setUsername(env.getProperty("spring.datasource.username"));
-        ds.setPassword(env.getProperty("spring.datasource.password"));
-        return ds;*/
-
 
         HikariConfig dataSourceConfig = new HikariConfig();
         dataSourceConfig.setDriverClassName(env.getRequiredProperty("spring.datasource.driver-class-name"));
